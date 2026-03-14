@@ -13,7 +13,7 @@ const experience = [
   {
     company: "Screenflow",
     role: "Partner & Developer",
-    period: "Mar 2025 – Present",
+    period: "Mar 2026 – Present",
     location: "Uzbekistan (Remote)",
     logo: "/screenflow.svg",
     trustmrr: "https://trustmrr.com/startup/screenflow-dev",
