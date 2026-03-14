@@ -328,7 +328,7 @@ export default function Home() {
         <section style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
           <p style={{ fontSize: "0.9375rem", color: MUTED, lineHeight: 1.75 }}>
             Hey, I&apos;m <span style={{ color: FG }}>Shashwat Srivastava</span>, a 21 yo
-            Software Developer who finds satisfaction in <span style={{ color: FG }}>complex systems</span>, the craft of engineering things that actually scale, and the overlap of{" "}
+            Software Developer who finds beauty in <span style={{ color: FG }}>complex systems</span>, the craft of engineering things that actually scale, and the overlap of{" "}
             <span style={{ fontFamily: "'Bespoke Serif', serif", fontStyle: "italic", color: FG }}>clean architecture</span>{" "}
             and <span style={{ fontFamily: "'Bespoke Serif', serif", fontStyle: "italic", color: FG }}>
               {typed}<span style={{ borderRight: done ? "none" : "1.5px solid hsl(0 0% 70%)", marginLeft: "1px", animation: done ? "none" : "blink 0.7s step-end infinite" }}/>
@@ -337,7 +337,7 @@ export default function Home() {
           <p style={{ fontSize: "0.9375rem", color: MUTED, lineHeight: 1.75 }}>
             I&apos;ve worked at <span style={{ color: FG }}>startups</span> and taken on{" "}
             <span style={{ color: FG, fontStyle: "italic" }}>freelance projects</span> across the stack.
-            I&apos;m a <span style={{ color: FG }}>gym rat</span>, a{" "}
+            I&apos;m a <span style={{ color: FG }}>Coffee addict</span>, a{" "}
             <span style={{ color: FG, fontStyle: "italic" }}>React Native</span> lover, and always neck-deep in a <span style={{ color: FG }}>side project</span>.
           </p>
           <p style={{ fontSize: "0.9375rem", color: MUTED, lineHeight: 1.75 }}>
