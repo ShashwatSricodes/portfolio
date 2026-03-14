@@ -211,7 +211,7 @@ export default function Home() {
       marginRight: "auto",
       paddingLeft: "1.5rem",
       paddingRight: "1.5rem",
-      paddingTop: "5rem",
+      paddingTop: "6rem",
       paddingBottom: "5rem",
       position: "relative",
       zIndex: 20,
@@ -220,8 +220,8 @@ export default function Home() {
       {/* ── Header ── */}
       <header style={{
         display: "flex",
-        alignItems: "flex-start",
-        justifyContent: "space-between",
+        flexDirection: "column",
+        gap: "0.75rem",
         width: "100%",
         marginBottom: "2.5rem",
       }}>
@@ -231,7 +231,7 @@ export default function Home() {
             Software Developer
           </p>
         </div>
-        <nav style={{ display: "flex", gap: "1rem" }}>
+        <nav style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem 1rem" }}>
           <a href="https://github.com/ShashwatSricodes" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>
             GitHub
           </a>
@@ -333,7 +333,7 @@ export default function Home() {
           <h2 style={{ fontSize: "1.125rem", fontWeight: 400, color: FG }}>Projects</h2>
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "1rem",
           }}>
             {projects.map((project) => (
