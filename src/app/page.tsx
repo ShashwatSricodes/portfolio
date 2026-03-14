@@ -227,14 +227,15 @@ export default function Home() {
     <style>{`
       @keyframes fadeUp {
         0%   { opacity: 0; transform: translateY(6px); }
-        15%  { opacity: 1; transform: translateY(0); }
-        85%  { opacity: 1; transform: translateY(0); }
+        5%   { opacity: 1; transform: translateY(0); }
+        20%  { opacity: 1; transform: translateY(0); }
+        25%  { opacity: 0; transform: translateY(-6px); }
         100% { opacity: 0; transform: translateY(-6px); }
       }
       .role-item {
         position: absolute;
         opacity: 0;
-        animation: fadeUp 3s ease-in-out infinite;
+        animation: fadeUp 12s ease-in-out infinite;
       }
       .role-item:nth-child(1) { animation-delay: 0s; }
       .role-item:nth-child(2) { animation-delay: 3s; }
@@ -245,6 +246,10 @@ export default function Home() {
         50% { opacity: 0; }
       }
       .nav-desktop {
+        display: flex;
+        gap: 1rem;
+      }
+      .nav-mobile {
         display: none;
         flex-wrap: wrap;
         gap: 0.75rem 1rem;
