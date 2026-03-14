@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { projects } from "@/lib/projects";
 import ScreenflowStats from "./screenflow-stats";
+import { useEffect, useState } from "react";
 
 const FG = "hsl(0 0% 98%)";
 const MUTED = "hsl(0 0% 63.9%)";
@@ -201,7 +202,69 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 }
 
 export default function Home() {
+  const TYPED_TEXT = "real-world impact";
+  const [typed, setTyped] = useState("");
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let i = 0;
+    const delay = 800; // start after 800ms
+    const timer = setTimeout(() => {
+      const interval = setInterval(() => {
+        i++;
+        setTyped(TYPED_TEXT.slice(0, i));
+        if (i >= TYPED_TEXT.length) {
+          clearInterval(interval);
+          setDone(true);
+        }
+      }, 60);
+      return () => clearInterval(interval);
+    }, delay);
+    return () => clearTimeout(timer);
+  }, []);
   return (
+    <>
+    <style>{`
+      @keyframes fadeUp {
+        0%   { opacity: 0; transform: translateY(6px); }
+        15%  { opacity: 1; transform: translateY(0); }
+        85%  { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(-6px); }
+      }
+      .role-item {
+        position: absolute;
+        opacity: 0;
+        animation: fadeUp 3s ease-in-out infinite;
+      }
+      .role-item:nth-child(1) { animation-delay: 0s; }
+      .role-item:nth-child(2) { animation-delay: 3s; }
+      .role-item:nth-child(3) { animation-delay: 6s; }
+      .role-item:nth-child(4) { animation-delay: 9s; }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .nav-desktop {
+        display: none;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+      }
+      .header-wrap {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 2.5rem;
+      }
+      @media (max-width: 540px) {
+        .nav-desktop { display: none; }
+        .nav-mobile { display: flex; }
+        .header-wrap {
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+      }
+    `}</style>
     <div style={{
       display: "flex",
       flexDirection: "column",
@@ -218,32 +281,38 @@ export default function Home() {
     }}>
 
       {/* ── Header ── */}
-      <header style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "0.75rem",
-        width: "100%",
-        marginBottom: "2.5rem",
-      }}>
+      <header className="header-wrap">
         <div>
           <h1 style={{ fontSize: "1.125rem", fontWeight: 400, color: FG, lineHeight: 1.4 }}>Shashwat Srivastava</h1>
-          <p style={{ fontSize: "0.875rem", fontWeight: 100, color: MUTED, fontFamily: "'Bespoke Serif', serif" }}>
-            Software Developer
-          </p>
+          {/* Animated role */}
+          <div style={{ position: "relative", height: "1.3rem", overflow: "hidden" }}>
+            {["Software Developer", "React Native Dev", "Entrepreneur", "Builder"].map((role, i) => (
+              <span key={i} className="role-item" style={{
+                fontSize: "0.875rem",
+                fontWeight: 100,
+                color: MUTED,
+                fontFamily: "'Bespoke Serif', serif",
+                fontStyle: "italic",
+                whiteSpace: "nowrap",
+              }}>{role}</span>
+            ))}
+          </div>
         </div>
-        <nav style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem 1rem" }}>
-          <a href="https://github.com/ShashwatSricodes" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/shashwatsrihere" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>
-            LinkedIn
-          </a>
-          <a href="https://drive.google.com/file/d/1h7r_RlyxG5b6DZ4CG2k4Aa0It5RKKkSQ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>
-            Resume
-          </a>
-          <a href="https://mail.google.com/mail/?view=cm&to=Shashwatdev.builds@gmail.com" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>
-            Email
-          </a>
+
+        {/* Desktop nav */}
+        <nav className="nav-desktop">
+          <a href="https://github.com/ShashwatSricodes" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>GitHub</a>
+          <a href="https://www.linkedin.com/in/shashwatsrihere" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>LinkedIn</a>
+          <a href="https://drive.google.com/file/d/1h7r_RlyxG5b6DZ4CG2k4Aa0It5RKKkSQ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>Resume</a>
+          <a href="https://mail.google.com/mail/?view=cm&to=Shashwatdev.builds@gmail.com" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>Email</a>
+        </nav>
+
+        {/* Mobile nav */}
+        <nav className="nav-mobile">
+          <a href="https://github.com/ShashwatSricodes" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>GitHub</a>
+          <a href="https://www.linkedin.com/in/shashwatsrihere" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>LinkedIn</a>
+          <a href="https://drive.google.com/file/d/1h7r_RlyxG5b6DZ4CG2k4Aa0It5RKKkSQ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>Resume</a>
+          <a href="https://mail.google.com/mail/?view=cm&to=Shashwatdev.builds@gmail.com" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>Email</a>
         </nav>
       </header>
 
@@ -256,7 +325,9 @@ export default function Home() {
             Hey, I&apos;m <span style={{ color: FG }}>Shashwat Srivastava</span>, a 21 yo
             Software Developer who finds satisfaction in <span style={{ color: FG }}>complex systems</span>, the craft of engineering things that actually scale, and the overlap of{" "}
             <span style={{ fontFamily: "'Bespoke Serif', serif", fontStyle: "italic", color: FG }}>clean architecture</span>{" "}
-            and <span style={{ fontFamily: "'Bespoke Serif', serif", fontStyle: "italic", color: FG }}>real-world impact</span>.
+            and <span style={{ fontFamily: "'Bespoke Serif', serif", fontStyle: "italic", color: FG }}>
+              {typed}<span style={{ borderRight: done ? "none" : "1.5px solid hsl(0 0% 70%)", marginLeft: "1px", animation: done ? "none" : "blink 0.7s step-end infinite" }}/>
+            </span>.
           </p>
           <p style={{ fontSize: "0.9375rem", color: MUTED, lineHeight: 1.75 }}>
             I&apos;ve worked at <span style={{ color: FG }}>startups</span> and taken on{" "}
@@ -351,5 +422,6 @@ export default function Home() {
         </p>
       </footer>
     </div>
+    </>
   );
 }
