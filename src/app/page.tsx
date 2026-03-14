@@ -14,7 +14,7 @@ const experience = [
     company: "Screenflow",
     role: "Partner & Developer",
     period: "Mar 2025 – Present",
-    location: "Remote",
+    location: "Uzbekistan (Remote)",
     logo: "/screenflow.svg",
     trustmrr: "https://trustmrr.com/startup/screenflow-dev",
     bullets: [
@@ -40,7 +40,7 @@ const experience = [
     company: "ChartNest",
     role: "Freelance",
     period: "July 2025 – August 2025",
-    location: "San Francisco",
+    location: "San Francisco (Remote)",
     logo: "/chartnest.svg",
     bullets: [
       <>Building a full-stack <b style={{color:FG, fontWeight:400}}>health tracking platform</b> with <b style={{color:FG, fontWeight:400}}>React, Node.js, and Supabase</b> (PostgreSQL), featuring vitals monitoring, medication tracking, and trend visualization using Recharts.</>,
