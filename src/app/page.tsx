@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
-import ScreenflowStats from "./screenflow-stats";
+// import ScreenflowStats from "./screenflow-stats";
 import { useEffect, useState } from "react";
 
 const FG = "hsl(0 0% 98%)";
@@ -10,19 +10,6 @@ const BORDER = "hsl(0 0% 20% / 0.5)";
 const SECONDARY_BG = "hsl(0 0% 8%)";
 
 const experience = [
-  {
-    company: "Screenflow",
-    role: "Partner & Developer",
-    period: "Mar 2026 – Present",
-    location: "Uzbekistan (Remote)",
-    logo: "/screenflow.svg",
-    trustmrr: "https://trustmrr.com/startup/screenflow-dev",
-    bullets: [
-      <>Already at <b style={{color:FG, fontWeight:400}}>$1k MRR</b> with <b style={{color:FG, fontWeight:400}}>5,000+ signups</b>, <b style={{color:FG, fontWeight:400}}>50+ paid users</b>, and <b style={{color:FG, fontWeight:400}}>$2,500+ in lifetime revenue</b>, verified on TrustMRR.</>,
-      <>Joined as a building partner on <b style={{color:FG, fontWeight:400}}>screenflow.dev</b>, an AI-powered mobile app design tool that generates beautiful screens from a text description and exports to Figma or reference code.</>,
-      <>Built on <b style={{color:FG, fontWeight:400}}>Next.js, Supabase, and Gemini API</b>; contributing to core product development across the full stack.</>,
-    ],
-  },
   {
     company: "Hastin Energy",
     role: "Software Developer Intern",
@@ -108,7 +95,6 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         (e.currentTarget as HTMLElement).style.borderColor = "hsl(0 0% 16%)";
       }}
     >
-      {/* Full-bleed bg photo */}
       <div style={{
         position: "relative",
         overflow: "hidden",
@@ -142,7 +128,6 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         </div>
       </div>
 
-      {/* Card body */}
       <div style={{ padding: "14px 16px 16px", borderTop: "1px solid hsl(0 0% 11%)" }}>
         <h3 style={{ fontSize: "0.9375rem", fontWeight: 400, color: FG, marginBottom: "4px" }}>
           {project.name}
@@ -187,7 +172,6 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         </div>
       </div>
 
-      {/* Accessible full-card link overlay */}
       <Link
         href={`/projects/${project.slug}`}
         style={{ position: "absolute", inset: 0, zIndex: 2, borderRadius: "16px" }}
@@ -208,7 +192,7 @@ export default function Home() {
 
   useEffect(() => {
     let i = 0;
-    const delay = 800; // start after 800ms
+    const delay = 800;
     const timer = setTimeout(() => {
       const interval = setInterval(() => {
         i++;
@@ -222,6 +206,7 @@ export default function Home() {
     }, delay);
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <>
     <style>{`
@@ -285,11 +270,9 @@ export default function Home() {
       zIndex: 20,
     }}>
 
-      {/* ── Header ── */}
       <header className="header-wrap">
         <div>
           <h1 style={{ fontSize: "1.125rem", fontWeight: 400, color: FG, lineHeight: 1.4 }}>Shashwat Srivastava</h1>
-          {/* Animated role */}
           <div style={{ position: "relative", height: "1.3rem", overflow: "hidden" }}>
             {["Software Developer", "React Native Dev", "Entrepreneur", "Builder"].map((role, i) => (
               <span key={i} className="role-item" style={{
@@ -304,7 +287,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Desktop nav */}
         <nav className="nav-desktop">
           <a href="https://github.com/ShashwatSricodes" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>GitHub</a>
           <a href="https://www.linkedin.com/in/shashwatsrihere" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>LinkedIn</a>
@@ -312,7 +294,6 @@ export default function Home() {
           <a href="https://mail.google.com/mail/?view=cm&to=Shashwatdev.builds@gmail.com" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>Email</a>
         </nav>
 
-        {/* Mobile nav */}
         <nav className="nav-mobile">
           <a href="https://github.com/ShashwatSricodes" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>GitHub</a>
           <a href="https://www.linkedin.com/in/shashwatsrihere" target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.875rem", color: FG, textDecoration: "none" }}>LinkedIn</a>
@@ -321,10 +302,8 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* ── Main ── */}
       <main id="main-content" style={{ display: "flex", flexDirection: "column", flex: 1, gap: "3.5rem" }}>
 
-        {/* Bio */}
         <section style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
           <p style={{ fontSize: "0.9375rem", color: MUTED, lineHeight: 1.75 }}>
             Hey, I&apos;m <span style={{ color: FG }}>Shashwat Srivastava</span>, a 21 yo
@@ -340,29 +319,8 @@ export default function Home() {
             I&apos;m a <span style={{ color: FG }}>Coffee addict</span>, a{" "}
             <span style={{ color: FG, fontStyle: "italic" }}>React Native</span> lover, and always neck-deep in a <span style={{ color: FG }}>side project</span>.
           </p>
-          <p style={{ fontSize: "0.9375rem", color: MUTED, lineHeight: 1.75 }}>
-            Currently focused on scaling{" "}
-            <span style={{
-              color: FG,
-              textDecoration: "underline",
-              textDecorationStyle: "wavy",
-              textDecorationColor: "hsl(0 0% 55%)",
-              textUnderlineOffset: "4px",
-            }}>ScreenFlow</span>{" "}
-            to{" "}
-            <span style={{
-              color: FG,
-              textDecoration: "underline",
-              textDecorationStyle: "wavy",
-              textDecorationColor: "hsl(0 0% 55%)",
-              textUnderlineOffset: "4px",
-            }}>$5k MRR</span>{" "}
-            in the next 6 months.
-          </p>
-          <ScreenflowStats />
         </section>
 
-        {/* ── Experience ── */}
         <hr style={{ border: "none", borderTop: `1px solid ${BORDER}`, margin: "0.5rem 0" }} />
         <section style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
@@ -403,7 +361,6 @@ export default function Home() {
           </ol>
         </section>
 
-        {/* ── Projects ── */}
         <hr style={{ border: "none", borderTop: `1px solid ${BORDER}`, margin: "0.5rem 0" }} />
         <section id="projects" style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <h2 style={{ fontSize: "1.125rem", fontWeight: 400, color: FG }}>Projects</h2>
@@ -420,7 +377,6 @@ export default function Home() {
 
       </main>
 
-      {/* ── Footer ── */}
       <footer style={{ paddingTop: "1.5rem", marginTop: "2rem", borderTop: `1px solid ${BORDER}` }}>
         <p style={{ fontSize: "0.8125rem", color: MUTED }}>
           © {new Date().getFullYear()} Shashwat Srivastava. All rights reserved.
